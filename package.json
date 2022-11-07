@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "storybook:dev": "start-storybook -p 6006 -s public",
+    "storybook:prod": "serve storybook-static",
+    "storybook:build": "build-storybook -s public"
   },
   "dependencies": {
     "@types/node": "18.11.9",
@@ -20,9 +25,28 @@
     "typescript": "4.8.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@storybook/addon-actions": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-interactions": "^6.5.13",
+    "@storybook/addon-links": "^6.5.13",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-webpack5": "^6.5.13",
+    "@storybook/manager-webpack5": "^6.5.13",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.5.13",
+    "@storybook/testing-library": "^0.0.13",
     "@tailwindcss/line-clamp": "^0.4.2",
     "autoprefixer": "^10.4.13",
+    "babel-loader": "^8.3.0",
+    "css-loader": "^6.7.1",
+    "eslint-plugin-storybook": "^0.6.7",
     "postcss": "^8.4.18",
+    "postcss-loader": "^7.0.1",
+    "sass": "^1.56.0",
+    "sass-loader": "^13.1.0",
+    "serve": "^14.0.1",
+    "style-loader": "^3.3.1",
     "tailwindcss": "^3.2.2"
   }
 }

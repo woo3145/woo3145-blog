@@ -1,6 +1,6 @@
-import DarkModeToggle from 'components/atoms/DarkModeToggle';
 import Link from 'next/link';
 import { useState } from 'react';
+import DarkModeToggle from '../atoms/DarkModeToggle';
 import Navigation from './Navigation';
 
 const Header = () => {

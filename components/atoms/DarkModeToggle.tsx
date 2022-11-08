@@ -9,7 +9,7 @@ const DarkModeToggle = ({ darkmode, onClick }: Props) => {
   return (
     <div
       onClick={onClick}
-      className="text-xl cursor-pointer flex items-center group opacity-50 relative"
+      className="text-xl cursor-pointer flex items-center group opacity-50"
     >
       {darkmode ? <BsSun /> : <BsMoon />}
     </div>

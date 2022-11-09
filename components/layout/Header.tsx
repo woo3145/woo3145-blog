@@ -1,14 +1,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import { useDarkMode } from '../../hooks/useDarkMode';
 import DarkModeToggle from '../atoms/DarkModeToggle';
 import Navigation from './Navigation';
 
 const Header = () => {
-  const [darkmode, setDarkMode] = useState(false);
-
-  const darkModeToggle = () => {
-    setDarkMode(!darkmode);
-  };
+  const { isDarkMode, toggle } = useDarkMode();
 
   return (
     <header className="w-full h-16 fixed top-0 bg-white shadow-md flex justify-center items-center">
@@ -19,7 +16,7 @@ const Header = () => {
 
         <div className="flex items-center">
           <Navigation />
-          <DarkModeToggle darkmode={darkmode} onClick={darkModeToggle} />
+          <DarkModeToggle darkMode={isDarkMode} onClick={toggle} />
         </div>
       </div>
     </header>

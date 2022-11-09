@@ -1,17 +1,24 @@
 import { BsMoon, BsSun } from 'react-icons/bs';
+import { useIsClient } from '../../hooks/useIsClient';
+import Icon from './Icon';
 
 interface Props {
-  darkmode?: boolean;
+  darkMode: boolean;
   onClick?: () => void;
 }
 
-const DarkModeToggle = ({ darkmode, onClick }: Props) => {
+const DarkModeToggle = ({ darkMode, onClick }: Props) => {
+  const isClient = useIsClient();
   return (
     <div
       onClick={onClick}
       className="text-xl cursor-pointer flex items-center group opacity-50"
     >
-      {darkmode ? <BsSun /> : <BsMoon />}
+      {isClient ? (
+        <Icon icon={darkMode ? 'sun' : 'moon'} size={20} />
+      ) : (
+        <Icon icon={'moon'} size={20} />
+      )}
     </div>
   );
 };

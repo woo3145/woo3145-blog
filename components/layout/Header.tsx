@@ -15,7 +15,6 @@ const Header = () => {
         </Link>
 
         <div className="flex items-center">
-          <Navigation />
           <DarkModeToggle theme={theme} onClick={toggle} />
         </div>
       </div>

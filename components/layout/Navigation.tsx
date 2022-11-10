@@ -1,18 +1,35 @@
 import Link from 'next/link';
+import Icon, { IconName } from '../atoms/Icon/Icon';
 
 const Navigation = () => {
   return (
-    <ul className="px-8 text-lg flex">
-      <NavigationItem text={'about'} href="about" />
-      <NavigationItem text={'posts'} href="posts" />
-    </ul>
+    <nav>
+      <ul className="">
+        <NavigationItem text={'홈'} href="/" icon={'home'} />
+        <NavigationItem text={'포스트'} href="posts" icon={'code'} />
+      </ul>
+    </nav>
   );
 };
 
-const NavigationItem = ({ text, href }: { text: string; href: string }) => {
+const NavigationItem = ({
+  text,
+  href,
+  icon,
+}: {
+  text: string;
+  href: string;
+  icon: IconName;
+}) => {
   return (
-    <li className="text-lg px-2 hover:translate-y-0.5 transition-transform">
-      <Link href={href}>{text}</Link>
+    <li>
+      <Link
+        href={href}
+        className="px-4 py-3 flex items-center hover:bg-slate-200 rounded-md"
+      >
+        <Icon icon={icon} size={20} className="mr-4" />
+        <p className="font-semibold">{text}</p>
+      </Link>
     </li>
   );
 };

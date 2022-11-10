@@ -1,3 +1,4 @@
+import ContactList from './ContactList';
 import Navigation from './Navigation';
 import TagList from './TagList';
 
@@ -8,6 +9,7 @@ const SideBar = () => {
       <div className="sticky top-20">
         <Navigation />
         <TagList />
+        <ContactList />
       </div>
     </div>
   );

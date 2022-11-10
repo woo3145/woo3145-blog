@@ -4,8 +4,6 @@ const Home: NextPage = () => {
   return (
     <div className="">
       <div className="h-screen">Home</div>
-      <div className="h-screen">Home</div>
-      <div className="h-screen">Home</div>
     </div>
   );
 };

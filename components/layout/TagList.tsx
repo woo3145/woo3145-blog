@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const TagList = () => {
   return (
-    <nav className="pt-6">
+    <nav className="mt-6">
       <h3 className="font-bold text-lg mb-2">태그</h3>
       <div className="h-96 overflow-y-scroll">
         <TagListItem href={'/'} text={'# Typescript'} />

@@ -13,12 +13,12 @@ const Template: ComponentStory<typeof DarkModeToggle> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  darkMode: false,
+  theme: 'dark',
   onClick: () => {},
 };
 
 export const DarkModeToggleOn = Template.bind({});
 DarkModeToggleOn.args = {
-  darkMode: true,
+  theme: 'light',
   onClick: () => {},
 };

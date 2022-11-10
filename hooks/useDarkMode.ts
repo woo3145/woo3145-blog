@@ -2,24 +2,24 @@ import { useEffect } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 interface UseDarkModeOutput {
-  isDarkMode: boolean;
+  theme: string;
   toggle: () => void;
 }
 
 export const useDarkMode = (): UseDarkModeOutput => {
-  const [darkMode, setDarkMode] = useLocalStorage<boolean>('darkmode', false);
+  const [theme, setTheme] = useLocalStorage<string>('theme', 'light');
 
   useEffect(() => {
-    if (darkMode) {
+    if (theme === 'dark') {
       document.getElementsByTagName('html')[0].classList.add('dark');
     } else {
       document.getElementsByTagName('html')[0].classList.remove('dark');
     }
-  }, [darkMode]);
+  }, [theme]);
 
   const toggle = () => {
-    setDarkMode(!darkMode);
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
-  return { isDarkMode: darkMode, toggle };
+  return { theme, toggle };
 };

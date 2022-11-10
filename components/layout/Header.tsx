@@ -5,7 +5,7 @@ import DarkModeToggle from '../atoms/DarkModeToggle';
 import Navigation from './Navigation';
 
 const Header = () => {
-  const { isDarkMode, toggle } = useDarkMode();
+  const { theme, toggle } = useDarkMode();
 
   return (
     <header className="w-full h-16 fixed top-0 bg-white shadow-md flex justify-center items-center">
@@ -16,7 +16,7 @@ const Header = () => {
 
         <div className="flex items-center">
           <Navigation />
-          <DarkModeToggle darkMode={isDarkMode} onClick={toggle} />
+          <DarkModeToggle theme={theme} onClick={toggle} />
         </div>
       </div>
     </header>

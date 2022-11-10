@@ -4,21 +4,16 @@ import DarkModeToggle from './DarkModeToggle';
 export default {
   title: 'DarkModeToggle',
   component: DarkModeToggle,
-  argTypes: {},
+  decorators: [
+    (story) => (
+      <div className="flex items-center justify-center py-20">{story()}</div>
+    ),
+  ],
 } as ComponentMeta<typeof DarkModeToggle>;
 
 const Template: ComponentStory<typeof DarkModeToggle> = (args) => (
-  <DarkModeToggle {...args} />
+  <DarkModeToggle />
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  theme: 'dark',
-  onClick: () => {},
-};
-
-export const DarkModeToggleOn = Template.bind({});
-DarkModeToggleOn.args = {
-  theme: 'light',
-  onClick: () => {},
-};
+Default.args = {};

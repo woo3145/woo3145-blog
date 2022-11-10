@@ -28,11 +28,6 @@ const DarkModeToggle = () => {
       ) : (
         <Icon icon={'moon'} size={20} className="absolute top-2" />
       )}
-      {/* {isClient ? (
-        <Icon icon={theme === 'dark' ? 'sun' : 'moon'} size={20} />
-      ) : (
-        <Icon icon={'moon'} size={20} />
-      )} */}
     </div>
   );
 };

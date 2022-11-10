@@ -13,7 +13,7 @@ const Layout = ({ children }: Props) => {
       <Header />
       <div className="w-full flex max-w-screen-2xl mx-auto px-8 py-10">
         <SideBar />
-        <main className="w-full">{children}</main>
+        <main className="w-full pl-8">{children}</main>
       </div>
       <Footer />
     </div>

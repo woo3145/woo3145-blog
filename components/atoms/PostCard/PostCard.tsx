@@ -8,31 +8,33 @@ interface Props {
     date: string;
     tags: string[];
     thumbnail?: string;
+    author: string;
+    excerpt: string;
   };
-  excerpt: string;
 }
 
-const PostCard = ({ slug, frontmatter, excerpt }: Props) => {
-  const { title, date, tags, thumbnail } = frontmatter;
+const PostCard = ({ slug, frontmatter }: Props) => {
+  const { title, date, tags, thumbnail, excerpt } = frontmatter;
   return (
     <div className="w-full md:max-w-[288px]">
       <Link href={`/post/${slug}`}>
         <div className="w-full transition-transform hover:-translate-y-1 duration-200 flex items-center md:block">
-          <div
-            className="w-40 h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-44
-           bg-slate-400 rounded-md relative"
-          >
-            {thumbnail ? (
-              <Image
-                fill
-                objectFit="cover"
-                objectPosition="center"
-                src={thumbnail}
-                alt="post_thumbnail"
-                className="rounded-md"
-              />
-            ) : null}
-          </div>
+          {thumbnail ? (
+            <Image
+              width={800}
+              height={600}
+              priority={true}
+              src={`/thumbnail/${thumbnail}`}
+              alt="post_thumbnail"
+              className="w-40 h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-44
+                bg-slate-400 rounded-md bg-cover object-cover object-center"
+            />
+          ) : (
+            <div
+              className="w-40 h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-44
+           bg-slate-400 rounded-md"
+            ></div>
+          )}
           <div className="w-full">
             <h3 className="text-2xl line-clamp-2">{title}</h3>
             <div className="mt-1">

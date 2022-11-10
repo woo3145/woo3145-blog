@@ -22,6 +22,7 @@ Default.args = {
     title: 'title',
     date: '2022-11-10',
     tags: ['Typescript', 'React'],
+    author: 'woo3145',
+    excerpt: 'excerpt',
   },
-  excerpt: 'excerpt',
 };

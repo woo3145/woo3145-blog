@@ -17,7 +17,7 @@ const PostCard = ({ slug, frontmatter }: Props) => {
   const { title, date, tags, thumbnail, excerpt } = frontmatter;
   return (
     <div className="w-full md:max-w-[288px]">
-      <Link href={`/post/${slug}`}>
+      <Link href={`/posts/${slug}`}>
         <div className="w-full transition-transform hover:-translate-y-1 duration-200 flex items-center md:block">
           {thumbnail ? (
             <Image

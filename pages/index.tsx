@@ -7,7 +7,7 @@ interface Props {
   posts: Post[];
 }
 
-const Home = ({ posts }: Props) => {
+const HomePage = ({ posts }: Props) => {
   return (
     <div className="w-full px-4 md:px-0">
       <div className="min-h-screen">
@@ -22,7 +22,7 @@ const Home = ({ posts }: Props) => {
   );
 };
 
-export default Home;
+export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {
   const files = fs.readdirSync('posts');

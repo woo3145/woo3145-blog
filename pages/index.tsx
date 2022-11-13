@@ -1,10 +1,9 @@
-import fs from 'fs';
-import matter from 'gray-matter';
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps } from 'next';
 import PostCard from '../components/atoms/PostCard/PostCard';
+import { getAllPosts } from '../utils/mdUtils';
 
 interface Props {
-  posts: Post[];
+  posts: IPost[];
 }
 
 const HomePage = ({ posts }: Props) => {
@@ -25,16 +24,7 @@ const HomePage = ({ posts }: Props) => {
 export default HomePage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const files = fs.readdirSync('posts');
-  const posts: Post[] = files.map((fileName: string) => {
-    const slug = fileName.replace('.md', '');
-    const readFile = fs.readFileSync(`posts/${fileName}`, 'utf-8');
-    const { data: frontmatter } = matter(readFile);
-    return {
-      slug,
-      frontmatter,
-    } as Post;
-  });
+  const posts = getAllPosts();
 
   return {
     props: {

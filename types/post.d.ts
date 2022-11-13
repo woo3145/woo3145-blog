@@ -1,14 +1,14 @@
-interface PostFrontmatter {
+interface IPostFrontmatter {
   title: string;
   date: string;
   tags: string[];
-  thumbnail?: string;
+  thumbnail: string;
   author: string;
   excerpt: string;
 }
 
-interface Post {
+interface IPost {
   slug: string;
-  frontmatter: PostFrontmatter;
+  frontmatter: IPostFrontmatter;
   content: string;
 }

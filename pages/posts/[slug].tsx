@@ -2,17 +2,17 @@ import fs from 'fs';
 import { serialize } from 'next-mdx-remote/serialize';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { MDXRemote } from 'next-mdx-remote';
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { getPostFileBySlug } from '../../utils/mdUtils';
 
 interface Props {
-  post: any;
+  source: MDXRemoteSerializeResult;
 }
 
-const PostPage = ({ post }: Props) => {
-  console.log(post);
+const PostPage = ({ source }: Props) => {
   return (
     <div>
-      <MDXRemote {...post} />
+      <MDXRemote {...source} />
     </div>
   );
 };
@@ -42,11 +42,13 @@ export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
   const { slug } = context.params as IParams;
-  const file = fs.readFileSync(`posts/${slug}.md`, 'utf-8');
-  const result = await serialize(file, { parseFrontmatter: true });
+  const file = getPostFileBySlug(slug);
+  const source: MDXRemoteSerializeResult = await serialize(file, {
+    parseFrontmatter: true,
+  });
   return {
     props: {
-      post: result,
+      source,
     },
   };
 };

@@ -9,9 +9,9 @@ tags:
 excerpt: '발췌'
 ---
 
-내용
+### 내용
 
-![test image](/assets/jae-park-7GX5aICb5i4-unsplash.jpg)
+<img src="/assets/jae-park-7GX5aICb5i4-unsplash.jpg" width="300" height="300" />
 
 gasdgagase
 

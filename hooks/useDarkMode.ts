@@ -11,9 +11,11 @@ export const useDarkMode = (): UseDarkModeOutput => {
 
   useEffect(() => {
     if (theme === 'dark') {
+      document.getElementsByTagName('html')[0].classList.remove('light');
       document.getElementsByTagName('html')[0].classList.add('dark');
     } else {
       document.getElementsByTagName('html')[0].classList.remove('dark');
+      document.getElementsByTagName('html')[0].classList.add('light');
     }
   }, [theme]);
 

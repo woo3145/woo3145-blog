@@ -12,7 +12,7 @@ interface Props {
 
 const PostPage = ({ source }: Props) => {
   return (
-    <div>
+    <div className="markdown-body">
       <MDXRemote {...source} />
     </div>
   );

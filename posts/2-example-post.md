@@ -10,4 +10,4 @@ excerpt: '발췌222'
 ---
 
 내용
-![test image](/public/assets/jae-park-7GX5aICb5i4-unsplash.jpg)
+![test image](/assets/jae-park-7GX5aICb5i4-unsplash.jpg)

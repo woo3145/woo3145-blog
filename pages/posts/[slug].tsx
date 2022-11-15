@@ -4,6 +4,7 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { getPostFileBySlug } from '../../utils/mdUtils';
+import rehypePlugins from 'rehype-img-size';
 
 interface Props {
   source: MDXRemoteSerializeResult;
@@ -45,6 +46,9 @@ export const getStaticProps: GetStaticProps = async (
   const file = getPostFileBySlug(slug);
   const source: MDXRemoteSerializeResult = await serialize(file, {
     parseFrontmatter: true,
+    mdxOptions: {
+      rehypePlugins: [[rehypePlugins, { dir: 'public' }]],
+    },
   });
   return {
     props: {

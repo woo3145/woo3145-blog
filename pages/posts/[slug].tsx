@@ -5,6 +5,8 @@ import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { getPostFileBySlug } from '../../utils/mdUtils';
 import rehypePlugins from 'rehype-img-size';
+import Utterances from '../../components/modules/Utterances';
+import Head from 'next/head';
 
 interface Props {
   source: MDXRemoteSerializeResult;
@@ -15,15 +17,21 @@ const PostPage = ({ source, frontmatter }: Props) => {
   const { title, date, tags, thumbnail, author, excerpt } = frontmatter;
 
   return (
-    <article className="mx-auto max-w-4xl">
-      <header className="w-full border-b mb-8">
-        <h1 className="text-3xl font-bold">{title}</h1>
-        <p className="mb-4 mt-2 text-sm text-neutral-500">{date}</p>
-      </header>
-      <div className="markdown-body">
-        <MDXRemote {...source} />
-      </div>
-    </article>
+    <>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <article className="mx-auto max-w-4xl">
+        <header className="w-full border-b mb-8">
+          <h1 className="text-3xl font-bold">{title}</h1>
+          <p className="mb-4 mt-2 text-sm text-neutral-500">{date}</p>
+        </header>
+        <div className="markdown-body">
+          <MDXRemote {...source} />
+        </div>
+        <Utterances />
+      </article>
+    </>
   );
 };
 

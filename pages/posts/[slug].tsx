@@ -8,13 +8,22 @@ import rehypePlugins from 'rehype-img-size';
 
 interface Props {
   source: MDXRemoteSerializeResult;
+  frontmatter: IPostFrontmatter;
 }
 
-const PostPage = ({ source }: Props) => {
+const PostPage = ({ source, frontmatter }: Props) => {
+  const { title, date, tags, thumbnail, author, excerpt } = frontmatter;
+
   return (
-    <div className="markdown-body">
-      <MDXRemote {...source} />
-    </div>
+    <article className="mx-auto max-w-4xl">
+      <header className="w-full border-b mb-8">
+        <h1 className="text-3xl font-bold">{title}</h1>
+        <p className="mb-4 mt-2 text-sm text-neutral-500">{date}</p>
+      </header>
+      <div className="markdown-body">
+        <MDXRemote {...source} />
+      </div>
+    </article>
   );
 };
 
@@ -53,6 +62,7 @@ export const getStaticProps: GetStaticProps = async (
   return {
     props: {
       source,
+      frontmatter: source.frontmatter,
     },
   };
 };

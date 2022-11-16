@@ -9,7 +9,7 @@ interface Props {
 const HomePage = ({ posts }: Props) => {
   return (
     <div className="w-full px-4 md:px-0">
-      <div className="min-h-screen">
+      <div className="">
         <p className="text-3xl mb-4 px-2">최근 포스트</p>
         <div className="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
           {posts.map((post, idx) => {

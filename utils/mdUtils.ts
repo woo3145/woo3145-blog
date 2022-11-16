@@ -10,7 +10,7 @@ const getPostsFilePaths = (): string[] => {
     .readdirSync('posts')
     .filter((path: string) => /\.mdx?/.test(path));
 
-  return files;
+  return files.filter((path: string) => path !== '0-guide.md');
 };
 
 export const getPostBySlug = (slug: string): IPost => {

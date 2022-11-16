@@ -9,7 +9,7 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   return (
-    <div className="pt-16 min-h-screen flex flex-col justify-between">
+    <div className="pt-16 flex flex-col justify-between min-h-screen">
       <Header />
       <div className="w-full flex md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl mx-auto px-2 py-10 md:px-8">
         <SideBar />

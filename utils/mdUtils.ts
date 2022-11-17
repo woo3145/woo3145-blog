@@ -38,3 +38,13 @@ export const getAllPosts = (): IPost[] => {
 
   return posts;
 };
+
+export const getAllTags = (): string[] => {
+  const posts = getAllPosts();
+
+  let tags: string[] = [];
+  posts.forEach((post) => {
+    tags = [...tags, ...post.frontmatter.tags];
+  });
+  return Array.from(new Set(tags));
+};

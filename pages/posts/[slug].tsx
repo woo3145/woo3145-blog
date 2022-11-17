@@ -3,18 +3,25 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { getPostFileBySlug } from '../../utils/mdUtils';
+import { getAllTags, getPostFileBySlug } from '../../utils/mdUtils';
 import rehypePlugins from 'rehype-img-size';
 import Utterances from '../../components/modules/Utterances';
 import Head from 'next/head';
+import { useTagContext } from '../../components/context/TagContext';
+import { useEffect } from 'react';
 
 interface Props {
   source: MDXRemoteSerializeResult;
   frontmatter: IPostFrontmatter;
+  allTags: string[];
 }
 
-const PostPage = ({ source, frontmatter }: Props) => {
+const PostPage = ({ source, frontmatter, allTags }: Props) => {
   const { title, date, tags, thumbnail, author, excerpt } = frontmatter;
+  const { setTags } = useTagContext();
+  useEffect(() => {
+    setTags(allTags);
+  }, [allTags, setTags]);
 
   return (
     <>
@@ -67,10 +74,12 @@ export const getStaticProps: GetStaticProps = async (
       rehypePlugins: [[rehypePlugins, { dir: 'public' }]],
     },
   });
+  const allTags = getAllTags();
   return {
     props: {
       source,
       frontmatter: source.frontmatter,
+      allTags,
     },
   };
 };

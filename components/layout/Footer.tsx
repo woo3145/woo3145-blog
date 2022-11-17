@@ -1,7 +1,26 @@
 const Footer = () => {
   return (
-    <footer className="w-full border-t bg-gray-200">
-      <div className="w-full max-w-screen-2xl px-8 mx-auto py-4">footer</div>
+    <footer className="w-full border-t flex justify-center py-6">
+      <p className="text-sm">
+        © {new Date().getFullYear()}&nbsp;
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href={process.env.NEXT_PUBLIC_USER_GITHUB_URL}
+          className="text-blue-500"
+        >
+          {process.env.NEXT_PUBLIC_USER_NAME}
+        </a>
+        &nbsp;powered by
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_REPO}`}
+          className="text-blue-500"
+        >
+          &nbsp;{process.env.NEXT_PUBLIC_GITHUB_REPO}
+        </a>
+      </p>
     </footer>
   );
 };

@@ -26,7 +26,7 @@ const PostPage = ({ source, frontmatter }: Props) => {
           <h1 className="text-3xl font-bold">{title}</h1>
           <p className="mb-4 mt-2 text-sm text-neutral-500">{date}</p>
         </header>
-        <div className="markdown-body">
+        <div className="markdown-body pb-20">
           <MDXRemote {...source} />
         </div>
         <Utterances />

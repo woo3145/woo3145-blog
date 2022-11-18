@@ -29,7 +29,7 @@ const PostPage = ({ source, frontmatter, allTags }: Props) => {
         <title>{title}</title>
       </Head>
       <article className="mx-auto max-w-4xl">
-        <header className="w-full border-b mb-8">
+        <header className="w-full border-b dark:border-neutral-700 mb-8">
           <h1 className="text-3xl font-bold">{title}</h1>
           <p className="mb-4 mt-2 text-sm text-neutral-500">{date}</p>
         </header>

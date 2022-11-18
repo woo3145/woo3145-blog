@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from '../Image/Image';
 
 interface Props {
   slug: string;
@@ -26,17 +26,17 @@ const PostCard = ({ slug, frontmatter }: Props) => {
               priority={true}
               src={`/thumbnail/${thumbnail}`}
               alt="post_thumbnail"
-              className="w-40 h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-44
-                bg-slate-400 rounded-md bg-cover object-cover object-center"
+              className="w-40 h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-40
+                bg-neutral-700 rounded-md bg-cover object-cover object-center"
             />
           ) : (
             <div
               className="w-40 h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-44
-           bg-slate-400 rounded-md"
+           bg-neutral-700 rounded-md"
             ></div>
           )}
           <div className="w-full">
-            <h3 className="text-2xl line-clamp-2">{title}</h3>
+            <h3 className="text-xl line-clamp-2">{title}</h3>
             <div className="mt-1">
               <p className="text-xs">{date}</p>
               <div className="flex gap-2 mt-1">
@@ -44,16 +44,14 @@ const PostCard = ({ slug, frontmatter }: Props) => {
                   return (
                     <div
                       key={idx}
-                      className="text-xs px-2 py-1 bg-slate-200 rounded-md"
+                      className="text-xs px-2 py-1 bg-neutral-200 dark:bg-neutral-600 rounded-md"
                     >
                       #{tag}
                     </div>
                   );
                 })}
               </div>
-              <div className="pt-2 text-gray-700 font-normal line-clamp-3">
-                {excerpt}
-              </div>
+              <div className="pt-2 font-normal line-clamp-3">{excerpt}</div>
             </div>
           </div>
         </div>

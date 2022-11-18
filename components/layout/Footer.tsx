@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="w-full border-t flex justify-center py-6">
+    <footer className="w-full border-t dark:border-neutral-700 flex justify-center py-6">
       <p className="text-sm">
         © {new Date().getFullYear()}&nbsp;
         <a

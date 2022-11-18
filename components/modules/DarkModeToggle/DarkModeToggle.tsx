@@ -10,7 +10,9 @@ const DarkModeToggle = () => {
   return (
     <div
       onClick={toggle}
-      className="w-10 h-10 border-2 rounded-full hover:border-slate-700 cursor-pointer flex items-center justify-center relative overflow-hidden"
+      className={`w-10 h-10 border-2 border-neutral-300 rounded-full cursor-pointer flex items-center justify-center relative overflow-hidden ${
+        theme === 'light' && 'hover:border-slate-700'
+      }`}
     >
       {isClient ? (
         <div
@@ -18,7 +20,12 @@ const DarkModeToggle = () => {
             theme === 'dark' ? 'rotate-0' : '-rotate-90'
           }`}
         >
-          <Icon icon={'moon'} size={20} className="absolute top-2" />
+          <Icon
+            icon={'moon'}
+            size={20}
+            className="absolute top-2"
+            color="white"
+          />
           <Icon
             icon={'sun'}
             size={20}

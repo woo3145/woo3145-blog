@@ -9,6 +9,7 @@ import Utterances from '../../components/modules/Utterances';
 import Head from 'next/head';
 import { useTagContext } from '../../components/context/TagContext';
 import { useEffect } from 'react';
+import rehypeHighlight from 'rehype-highlight';
 
 interface Props {
   source: MDXRemoteSerializeResult;
@@ -71,7 +72,7 @@ export const getStaticProps: GetStaticProps = async (
   const source: MDXRemoteSerializeResult = await serialize(file, {
     parseFrontmatter: true,
     mdxOptions: {
-      rehypePlugins: [[rehypePlugins, { dir: 'public' }]],
+      rehypePlugins: [[rehypePlugins, { dir: 'public' }], rehypeHighlight],
     },
   });
   const allTags = getAllTags();

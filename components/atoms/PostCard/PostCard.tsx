@@ -18,7 +18,7 @@ const PostCard = ({ slug, frontmatter }: Props) => {
   return (
     <div className="w-full md:max-w-[288px]">
       <Link href={`/posts/${slug}`}>
-        <div className="w-full transition-transform hover:-translate-y-1 duration-200 flex items-center md:block">
+        <div className="w-full transition-transform group hover:-translate-y-1 duration-200 flex items-center md:block">
           {thumbnail ? (
             <Image
               width={800}
@@ -26,17 +26,19 @@ const PostCard = ({ slug, frontmatter }: Props) => {
               priority={true}
               src={`/thumbnail/${thumbnail}`}
               alt="post_thumbnail"
-              className="w-40 h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-40
+              className="w-40 max-w-[140px] md:max-w-none h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-40
                 bg-neutral-700 rounded-md bg-cover object-cover object-center"
             />
           ) : (
             <div
-              className="w-40 h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-44
+              className="w-40 max-w-[180px] h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-44
            bg-neutral-700 rounded-md"
             ></div>
           )}
           <div className="w-full">
-            <h3 className="text-xl line-clamp-2">{title}</h3>
+            <h3 className="text-xl font-bold line-clamp-2 md:group-hover:line-clamp-none">
+              {title}
+            </h3>
             <div className="mt-1">
               <p className="text-xs">{date}</p>
               <div className="flex gap-2 mt-1">
@@ -51,7 +53,7 @@ const PostCard = ({ slug, frontmatter }: Props) => {
                   );
                 })}
               </div>
-              <div className="pt-2 font-normal line-clamp-3">{excerpt}</div>
+              <div className="pt-2 line-clamp-3">{excerpt}</div>
             </div>
           </div>
         </div>

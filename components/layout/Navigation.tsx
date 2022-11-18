@@ -28,7 +28,7 @@ const NavigationItem = ({
         className="px-4 py-3 flex items-center hover:bg-slate-200 dark:hover:bg-neutral-700 rounded-md"
       >
         <Icon icon={icon} size={20} className="mr-4 dark:fill-white" />
-        <p className="font-semibold">{text}</p>
+        <p className="">{text}</p>
       </Link>
     </li>
   );

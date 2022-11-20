@@ -18,21 +18,21 @@ const PostCard = ({ slug, frontmatter }: Props) => {
   return (
     <div className="w-full md:max-w-[288px]">
       <Link href={`/posts/${slug}`}>
-        <div className="w-full transition-transform group hover:-translate-y-1 duration-200 flex items-center md:block">
+        <div className="w-full group hover:-translate-y-1 duration-200 flex items-center md:block">
           {thumbnail ? (
             <Image
-              width={800}
-              height={600}
+              width={1280}
+              height={720}
               priority={true}
               src={`/thumbnail/${thumbnail}`}
               alt="post_thumbnail"
-              className="w-40 max-w-[140px] md:max-w-none h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-40
-                bg-neutral-700 rounded-md bg-cover object-cover object-center"
+              className="w-40 max-w-[140px] md:max-w-none mr-4 shrink-0 md:mb-2 md:mr-0
+                bg-secondary rounded-md bg-cover object-cover object-center"
             />
           ) : (
             <div
-              className="w-40 max-w-[180px] h-24 mr-4 shrink-0 md:mb-2 md:mr-0 md:w-full md:h-44
-           bg-neutral-700 rounded-md"
+              className="w-40 max-w-[140px] md:max-w-none mr-4 shrink-0 md:mb-2 md:mr-0
+           bg-secondary rounded-md"
             ></div>
           )}
           <div className="w-full">
@@ -46,7 +46,7 @@ const PostCard = ({ slug, frontmatter }: Props) => {
                   return (
                     <div
                       key={idx}
-                      className="text-xs px-2 py-1 bg-neutral-200 dark:bg-neutral-600 rounded-md"
+                      className="text-xs px-2 py-1 bg-secondary rounded-md"
                     >
                       #{tag}
                     </div>

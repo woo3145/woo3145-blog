@@ -11,7 +11,7 @@ const DarkModeToggle = () => {
     <div
       onClick={toggle}
       className={`w-10 h-10 border-2 border-neutral-300 rounded-full cursor-pointer flex items-center justify-center relative overflow-hidden ${
-        theme === 'light' && 'hover:border-slate-700'
+        isClient && theme === 'light' && 'hover:border-slate-700'
       }`}
     >
       {isClient ? (

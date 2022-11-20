@@ -11,7 +11,13 @@ const TagList = () => {
         scrollbar-track-neutral-200 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-800 dark:scrollbar-thumb-slate-300"
       >
         {tags.map((tag, idx) => {
-          return <TagListItem key={idx} href={`/`} text={`${tag}`} />;
+          return (
+            <TagListItem
+              key={idx}
+              href={`/posts?filter=${tag}`}
+              text={`${tag}`}
+            />
+          );
         })}
       </div>
     </nav>
@@ -23,7 +29,7 @@ const TagListItem = ({ href, text }: { href: string; text: string }) => {
     <div>
       <Link
         href={href}
-        className="px-2 py-2 text-sm flex hover:bg-slate-200 dark:hover:bg-neutral-700 rounded-md first-letter:uppercase"
+        className="px-2 py-2 text-sm flex hover:bg-secondary rounded-md first-letter:uppercase"
       >
         # <span className="first-letter:uppercase pl-2">{text}</span>
       </Link>

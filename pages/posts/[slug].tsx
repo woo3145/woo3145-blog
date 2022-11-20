@@ -34,9 +34,21 @@ const PostPage = ({ source, frontmatter, allTags }: Props) => {
         <title>{title}</title>
       </Head>
       <article className="mx-auto max-w-4xl">
-        <header className="w-full border-b dark:border-neutral-700 mb-8">
+        <header className="w-full border-b mb-12 pb-4">
           <h1 className="text-3xl font-bold">{title}</h1>
-          <p className="mb-4 mt-2 text-sm text-neutral-500">{date}</p>
+          <p className="mt-2 text-sm text-secondary">{date}</p>
+          <div className="flex gap-2 mt-4">
+            {tags.map((tag, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="text-xs px-2 py-1 bg-secondary rounded-md"
+                >
+                  #{tag}
+                </div>
+              );
+            })}
+          </div>
         </header>
         <div className="markdown-body pb-20">
           <MDXRemote {...source} />

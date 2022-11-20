@@ -3,7 +3,11 @@ import { serialize } from 'next-mdx-remote/serialize';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
-import { getAllTags, getPostFileBySlug } from '../../utils/mdUtils';
+import {
+  getAllTags,
+  getPostFileBySlug,
+  getPostsFilePaths,
+} from '../../utils/mdUtils';
 import rehypePlugins from 'rehype-img-size';
 import Utterances from '../../components/modules/Utterances';
 import Head from 'next/head';
@@ -50,11 +54,11 @@ interface IParams extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const files = fs.readdirSync('posts');
-  const paths = files.map((fileName) => {
+  const filePaths = getPostsFilePaths();
+  const paths = filePaths.map((path) => {
     return {
       params: {
-        slug: fileName.replace('.md', ''),
+        slug: path.replace('.md', ''),
       },
     };
   });

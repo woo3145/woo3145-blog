@@ -5,7 +5,7 @@ export const getPostFileBySlug = (slug: string) => {
   return fs.readFileSync(`posts/${slug}.md`, 'utf-8');
 };
 
-const getPostsFilePaths = (): string[] => {
+export const getPostsFilePaths = (): string[] => {
   const files = fs
     .readdirSync('posts')
     .filter((path: string) => /\.mdx?/.test(path));

@@ -14,7 +14,12 @@ const noto = Noto_Sans_KR({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div className={`${noto.className}`}>
+    <div>
+      <style jsx global>{`
+        html {
+          font-family: ${noto.style.fontFamily};
+        }
+      `}</style>
       <TagContextProvider>
         <Layout>
           <Component {...pageProps} />

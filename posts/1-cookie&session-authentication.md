@@ -2,7 +2,7 @@
 title: '세션&쿠키 인증방식'
 author: 'woo3145'
 date: '2022-11-16'
-thumbnail: '1-georg-bommeli-ybtUqjybcjE-unsplash.jpg'
+thumbnail: '1_thumbnail.png'
 tags:
   - authentication
 excerpt: '세션&쿠키 인증방식'

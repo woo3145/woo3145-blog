@@ -14,6 +14,7 @@ import Head from 'next/head';
 import { useTagContext } from '../../components/context/TagContext';
 import { useEffect } from 'react';
 import rehypeHighlight from 'rehype-highlight';
+import TagBadge from '../../components/atoms/Badge/TagBadge';
 
 interface Props {
   source: MDXRemoteSerializeResult;
@@ -39,14 +40,7 @@ const PostPage = ({ source, frontmatter, allTags }: Props) => {
           <p className="mt-2 text-sm text-secondary">{date}</p>
           <div className="flex gap-2 mt-4">
             {tags.map((tag, idx) => {
-              return (
-                <div
-                  key={idx}
-                  className="text-xs px-2 py-1 bg-secondary rounded-md"
-                >
-                  #{tag}
-                </div>
-              );
+              return <TagBadge key={idx} text={tag} size={'sm'} />;
             })}
           </div>
         </header>

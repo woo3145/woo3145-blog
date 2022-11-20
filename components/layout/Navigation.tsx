@@ -6,7 +6,7 @@ const Navigation = () => {
     <nav>
       <ul className="">
         <NavigationItem text={'홈'} href="/" icon={'home'} />
-        <NavigationItem text={'포스트'} href="posts" icon={'code'} />
+        <NavigationItem text={'포스트'} href="/posts" icon={'code'} />
       </ul>
     </nav>
   );

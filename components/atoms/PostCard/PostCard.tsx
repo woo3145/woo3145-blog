@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import TagBadge from '../Badge/TagBadge';
 import Image from '../Image/Image';
 
 interface Props {
@@ -21,21 +22,21 @@ const PostCard = ({ slug, frontmatter }: Props) => {
         <div className="w-full group hover:-translate-y-1 duration-200 flex items-center md:block">
           {thumbnail ? (
             <Image
-              width={1280}
-              height={720}
+              width={288}
+              height={150}
               priority={true}
               src={`/thumbnail/${thumbnail}`}
               alt="post_thumbnail"
-              className="w-40 max-w-[140px] md:max-w-none mr-4 shrink-0 md:mb-2 md:mr-0
+              className="w-40 max-w-[140px] md:max-w-none shrink-0 md:mb-2
                 bg-secondary rounded-md bg-cover object-cover object-center"
             />
           ) : (
             <div
-              className="w-40 max-w-[140px] md:max-w-none mr-4 shrink-0 md:mb-2 md:mr-0
+              className="w-40 max-w-[140px] md:max-w-none shrink-0 md:mb-2
            bg-secondary rounded-md"
             ></div>
           )}
-          <div className="w-full">
+          <div className="w-full pl-4 md:pl-0">
             <h3 className="text-xl font-bold line-clamp-2 md:group-hover:line-clamp-none">
               {title}
             </h3>
@@ -43,14 +44,7 @@ const PostCard = ({ slug, frontmatter }: Props) => {
               <p className="text-xs">{date}</p>
               <div className="flex gap-2 mt-1">
                 {tags.map((tag, idx) => {
-                  return (
-                    <div
-                      key={idx}
-                      className="text-xs px-2 py-1 bg-secondary rounded-md"
-                    >
-                      #{tag}
-                    </div>
-                  );
+                  return <TagBadge key={idx} text={tag} />;
                 })}
               </div>
               <div className="pt-2 line-clamp-3">{excerpt}</div>

@@ -28,7 +28,7 @@ const Utterances = () => {
   }, []);
 
   return (
-    <div className="border-t dark:border-neutral-700 pt-8">
+    <div className="border-t pt-8">
       <div ref={uttLight} className="dark:hidden"></div>
       <div ref={uttDark} className="hidden dark:block"></div>
     </div>

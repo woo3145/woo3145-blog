@@ -1,4 +1,5 @@
-import { ReactNode, useState } from 'react';
+import { useRouter } from 'next/router';
+import { ReactNode, useEffect, useState } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 import { MobileSideBar, SideBar } from './SideBar';
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
+  const router = useRouter();
   const [mobileSideBarVisible, setMobileSideBarVisible] = useState(false);
 
   const openSideBar = () => {
@@ -16,6 +18,10 @@ const Layout = ({ children }: Props) => {
   const closeSideBar = () => {
     setMobileSideBarVisible(false);
   };
+
+  useEffect(() => {
+    setMobileSideBarVisible(false);
+  }, [router]);
 
   return (
     <>

@@ -27,6 +27,9 @@ module.exports = {
       borderColor: {
         DEFAULT: 'var(--color-border-primary)',
       },
+      fill: {
+        primary: 'var(--color-text-primary)',
+      },
     },
   },
   plugins: [

@@ -65,7 +65,7 @@ const PostsPage = ({ posts, allTags }: Props) => {
               key={idx}
               onClick={() => onClickTag(tag)}
               className={`block px-4 py-2 bg-secondary text-primary rounded-full first-letter:uppercase cursor-pointer transition-colors
-              focus:ring-2 ring-purple ring-offset-4 ${
+              focus:ring-2 hover:ring-2 ring-purple ring-offset-4 ${
                 tag === filter && 'text-inverse bg-inverse'
               }`}
             >

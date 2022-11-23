@@ -28,12 +28,12 @@ const PostCard = ({ slug, frontmatter }: Props) => {
                 priority={true}
                 src={`/thumbnail/${thumbnail}`}
                 alt="post_thumbnail"
-                className="w-40 max-w-[140px] md:max-w-none shrink-0 md:mb-2
+                className="w-[288px] h-[62px] md:h-[150px] max-w-[140px] md:max-w-none shrink-0 md:mb-2
                 bg-secondary rounded-md bg-cover object-cover object-center"
               />
             ) : (
               <div
-                className="w-40 max-w-[140px] md:max-w-none shrink-0 md:mb-2
+                className="w-[288px] h-[62px] md:h-[150px] max-w-[140px] md:max-w-none shrink-0 md:mb-2
            bg-secondary rounded-md"
               ></div>
             )}

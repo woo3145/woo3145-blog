@@ -8,13 +8,14 @@ interface Props {
 
 const TagBadge = ({ text, className, size = 'xs' }: Props) => {
   return (
-    <Link
-      href={`/posts?filter=${text}`}
-      className={`text-${size} px-2 py-1 bg-secondary rounded-md first-letter:uppercase hover:underline ${
-        className && className
-      }`}
-    >
-      # {text}
+    <Link href={`/posts?filter=${text}`}>
+      <p
+        className={`text-${size} px-2 py-1 bg-secondary rounded-md first-letter:uppercase hover:underline ${
+          className && className
+        }`}
+      >
+        # {text}
+      </p>
     </Link>
   );
 };

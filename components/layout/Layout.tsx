@@ -20,7 +20,7 @@ const Layout = ({ children }: Props) => {
   };
 
   useEffect(() => {
-    setMobileSideBarVisible(false);
+    closeSideBar();
   }, [router]);
 
   return (

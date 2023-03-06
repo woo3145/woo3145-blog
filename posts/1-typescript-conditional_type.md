@@ -8,7 +8,7 @@ tags:
 excerpt: 'typescript 부시기 - extends'
 ---
 
-## 문제의 시작
+# 문제의 시작
 
 문득 타입스크립트를 잘 활용하지 못하고 기본적인 기능으로만 대강 넘어가고 있는 나 자신을 발견했다.
 타입스크립트를 사용하여 개발하면 아래와 같은 딜레마에 빠지게 된다.
@@ -20,7 +20,7 @@ excerpt: 'typescript 부시기 - extends'
 타입을 any로 넘어가게 된다면 런타임전에 타입으로 에러를 잡을 수 있는 타입스크립트의 최대의 강점을 버리는 것이다.
 따라서 정확한 코드의 흐름의 타입을 작성할 수 있도록 연구하고 문서화를 해야하는 필요성이 느껴졌다.
 
-#### extends... extends... extends...
+## extends... extends... extends...
 
 ```ts
 export type Expect<T extends true> = T;
@@ -35,12 +35,13 @@ export type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <
 하지만 그런다면 지금까지와 뭐가 다르겠는가?
 이번글에서 위 코드의 동작을 정확하게 이해할 수 있도록 정리해야겠다.
 
-#### extends의 여러 용도
+## extends의 여러 용도
 
 extends는 지금까지 typescript에서 굉장히 많이 쓰던 키워드이다.
 
+### 1. Interface & Class 확장
+
 ```ts
-1. Interface 확장
 interface Animal {
   live(): void;
 }
@@ -48,7 +49,6 @@ interface Dog extends Animal {
   woof(): void;
 }
 
-2. Class 확장
 class Animal {
   move() {console.log("moving")}
 }
@@ -67,13 +67,14 @@ Animal은 Dog의 '슈퍼타입' 이다.
 ```
 
 보통 extend는 "연장/확대하다"라는 영단어 이기에 확장하는데에만 익숙하게 사용했다.
-하지만 타입스크립트 문서를 처음 공부하며 분명히 읽었지만 어렵거나, 또는 자주 사용하지 않아 잊혀져버린 '조건부 타입'과 '제한' 하는 용도로 extends를 사용하기도 한다.
+하지만 어렵거나, 또는 자주 사용하지 않아 잊혀져버린 '조건부 타입'과 '제한' 하는 용도로 extends를 사용하기도 한다.
 
-```ts
-3. 조건부 타입
+### 3. 조건부 타입
+
 조건부 타입의 정의는 extends의 왼쪽에 있는 유형이 오른쪽의 서브타입이면
 참, 아니라면 거짓 으로 ?분기문에 의해 분기된다.
 
+```ts
 type Upcastability<T, U> = T extends U ? true : false;
 
 type A = {
@@ -83,36 +84,44 @@ type B = {
   a: string;
   b: string;
 };
-
 A와 B의 관계는 A가 '슈퍼타입', B가 '서브타입' 이므로 아래와 같은 결과가 된다.
 type Result1 = Upcastability<A, B>; // false
 type Result2 = Upcastability<B, A>; // true
-
-3 - 1. *조건부 분배*
-제너릭을 이용하여 조건부 타입을 사용한 경우 '분배'가 일어난다
-
-'분배'은 아래와 같이 작동한다.
-type toArray<T> = T extends any ? T[]: never;
-type Test = toArray<string | number>; // string[] | number[]
-
-  1. toArray의 제너릭으로 들어온 string, number를 다음과 같이 매핑한다.
-   -> toArray<string> | toArray<number>  // string[] | number[]
-  2. 결과값을 합쳐 반환한다.
-   -> Test = string[] | number[]
-
-만약 '분배'을 원하지 않는다면 아래와 같은 선택지가 있다.
-  1. 제너릭을 사용하지 않고 리터럴 타입을 명시
-type toArray = string | number extends any ? (string | number)[]: never;
-type Test = toArray; // (string | number)[]
-  2. 제너릭을 변형
-type toArray<T> = T[] extends any[] ? T[]: never;
-type Test = toArray<string | number>; // (string | number)[]
 ```
 
+#### 3 - 1. _조건부 타입 분배_
+
+제너릭을 이용하여 조건부 타입을 사용한 경우 '분배'가 일어난다
+'분배'은 아래와 같이 작동한다.
+
 ```ts
-4. 타입 제한
-제너릭<>안에서 extends가 쓰인경우 '제한'의 용도로 쓰인다.
+type toArray<T> = T extends any ? T[] : never;
+type Test = toArray<string | number>; // string[] | number[]
+
+1. toArray의 제너릭으로 들어온 string, number를 다음과 같이 매핑한다.
+   -> toArray<string> | toArray<number> // string[] | number[]
+2. 결과값을 합쳐 반환한다.
+   -> Test = string[] | number[]
+```
+
+만약 '분배'을 원하지 않는다면 아래와 같은 선택지가 있다.
+
+```ts
+1. 제너릭을 사용하지 않고 리터럴 타입을 명시
+   type toArray = string | number extends any ? (string | number)[]: never;
+   type Test = toArray; // (string | number)[]
+2. 제너릭을 변형
+   type toArray<T> = T[] extends any[] ? T[]: never;
+   type Test = toArray<string | number>; // (string | number)[]
+```
+
+### 4. 타입 제한
+
+제너릭 \<\>안에서 extends가 쓰인경우 '제한'의 용도로 쓰인다.
 원리는 위와 같이 왼쪽이 오른쪽의 서브타입인지 확인하는 것인데 확인함으로써 T의 타입을 보장할 수 있다.
+
+```ts
+
 type A = {a: string};
 type Test<T extends A> = T;
 
@@ -133,7 +142,7 @@ a<{a: number}>({a: 4}); // error
 
 ```
 
-#### 복잡한 코드 분석
+## 복잡한 코드 분석
 
 자 그럼 위에서 본 복잡한 코드를 분석해보자.
 
@@ -183,7 +192,7 @@ export type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <
 
 ```
 
-#### 응용해보기
+## 응용해보기
 
 ```ts
 위 'Equal' 타입은 결국 X와 Y가 서로 서브타입을 만족하는지 체크하면 되는 타입이다.
@@ -197,4 +206,6 @@ true를 반환하도록 수정하였다.
 type Exclude<T, U> = T extends U ? never : T;
 type test = Exclude<'a'|'b'|'c', 'c'>; // test = 'a' | 'b'
 
+위 타입은 첫번째 제너릭 타입에서 두번째 제너릭 타입들을 제외시키는 타입이다.
+조건부타입 분배로 인해 'c'를 제외한 타입들이 합쳐져 'a'|'b'가 되었다.
 ```

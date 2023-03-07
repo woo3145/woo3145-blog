@@ -209,3 +209,19 @@ type test = Exclude<'a'|'b'|'c', 'c'>; // test = 'a' | 'b'
 위 타입은 첫번째 제너릭 타입에서 두번째 제너릭 타입들을 제외시키는 타입이다.
 조건부타입 분배로 인해 'c'를 제외한 타입들이 합쳐져 'a'|'b'가 되었다.
 ```
+
+### ++추가업뎃
+
+```ts
+type Equal<X, Y> = X extends Y ? (Y extends X ? true : false) : false;
+type Test = Equal<'a' | 'b' | 'c', 'a'>; // 예상 : false,  결과 : boolean
+// 위 함수는 제너릭으로 유니온타입이 들어오면 '조건부타입 분배'로 인해 아래와 같이 작동한다
+// 1. Equal<"a"> | Equal<"b"> | Equal<"c">
+// 2. true | false | false 로 결과냄
+// 3. boolean | boolean | boolean 으로 다시 추론
+// 4. 합쳐서 boolean 반환
+
+type Equal<X, Y> = X[] extends Y[] ? (Y extends X ? true : false) : false;
+
+// 따라서 첫 조건부의 제너릭을 변형시켜준다.
+```

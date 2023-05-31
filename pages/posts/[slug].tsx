@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { serialize } from 'next-mdx-remote/serialize';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
@@ -33,6 +32,31 @@ const PostPage = ({ source, frontmatter, allTags }: Props) => {
     <>
       <Head>
         <title>{title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={excerpt} />
+        <meta name="author" content={author} />
+        <meta key="og:type" property="og:type" content="article" />
+        <meta key="og:title" property="og:title" content={title} />
+        <meta
+          key="og:description"
+          property="og:description"
+          content={excerpt}
+        />
+        <meta key="og:image" property="og:image" content={thumbnail} />
+        <meta key="og:image:width" property="og:image:width" content={'300'} />
+        <meta
+          key="og:image:height"
+          property="og:image:height"
+          content={'150'}
+        />
+        <meta key="twitter:card" name="twitter:card" content="summary" />
+        <meta key="twitter:title" name="twitter:title" content={title} />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={excerpt}
+        />
+        <meta key="twitter:image" name="twitter:image" content={thumbnail} />
       </Head>
       <article className="max-w-4xl mx-auto">
         <header className="w-full pb-4 mb-12 border-b">

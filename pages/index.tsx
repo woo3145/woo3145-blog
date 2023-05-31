@@ -18,8 +18,8 @@ const HomePage = ({ posts, allTags }: Props) => {
   return (
     <div className="w-full px-4 md:px-0">
       <div className="">
-        <p className="text-3xl mb-4 px-2">최근 포스트</p>
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+        <p className="px-2 mb-4 text-3xl">최근 포스트</p>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {posts.map((post, idx) => {
             return <PostCard key={idx} {...post} />;
           })}

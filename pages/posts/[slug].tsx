@@ -34,8 +34,8 @@ const PostPage = ({ source, frontmatter, allTags }: Props) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <article className="mx-auto max-w-4xl">
-        <header className="w-full border-b mb-12 pb-4">
+      <article className="max-w-4xl mx-auto">
+        <header className="w-full pb-4 mb-12 border-b">
           <h1 className="text-3xl font-bold">{title}</h1>
           <p className="mt-2 text-sm text-secondary">{date}</p>
           <div className="flex gap-2 mt-4">
@@ -44,7 +44,7 @@ const PostPage = ({ source, frontmatter, allTags }: Props) => {
             })}
           </div>
         </header>
-        <div className="markdown-body pb-20">
+        <div className="pb-20 markdown-body">
           <MDXRemote {...source} />
         </div>
         <Utterances />

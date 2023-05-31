@@ -35,6 +35,10 @@ export default function App({ Component, pageProps }: AppProps) {
           name="twitter:description"
           content="woo3145의 개발 블로그 입니다."
         />
+        <meta
+          name="google-site-verification"
+          content="LpYUsfBzMiQKyn80Cq6jD6zbAfwzOxkZMe86DaOKuZI"
+        />
       </Head>
       <style jsx global>{`
         html {

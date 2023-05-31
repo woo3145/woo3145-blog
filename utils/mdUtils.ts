@@ -36,7 +36,7 @@ export const getAllPosts = (): IPost[] => {
     return result;
   });
 
-  return posts;
+  return posts.reverse();
 };
 
 export const getAllTags = (): string[] => {

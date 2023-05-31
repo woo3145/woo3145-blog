@@ -2,7 +2,7 @@
 title: 'Next13의 app directory에서 AWS S3에 이미지 업로드를 하는 방법'
 author: 'woo3145'
 date: '2023-5-31'
-thumbnail: 'thumbnail_ts.png'
+thumbnail: '2_thumbnail.png'
 tags:
   - Next
 excerpt: 'pages/api -> app/api로 마이그레이션'

@@ -398,6 +398,7 @@
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 2em;
+  list-style-type: circle;
 }
 
 .markdown-body ol ol,
@@ -704,7 +705,7 @@
 .markdown-body ul.no-list,
 .markdown-body ol.no-list {
   padding: 0;
-  list-style-type: none;
+  list-style-type: circle;
 }
 
 .markdown-body ol[type='1'] {
@@ -1006,7 +1007,7 @@
 }
 
 .markdown-body .task-list-item {
-  list-style-type: none;
+  list-style-type: circle;
 }
 
 .markdown-body .task-list-item label {

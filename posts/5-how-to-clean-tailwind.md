@@ -15,7 +15,7 @@ excerpt: 'Tailwind에서 꼭 알아야 할 문제 & 재사용성과 가독성 �
 
 가장 간과하기 쉬운 문제이다. 아래의 코드를 보자
 
-```js
+```jsx
 // 1번 - 스타일을 가변인자로 변경
 const Button = ({ width, height }: Props) => {
   return <button className={`w-${width} h-${height}`}>확인</button>;
@@ -44,7 +44,7 @@ const Button = ({ width, height }: Props) => {
 
 아래와 같은 경우는 어떨까?
 
-```js
+```tsx
 const Button = ({ outline }: Props) => {
   return (
     <button className={`${outline ? 'border-2' : 'border-0'}`}>확인</button>
@@ -60,7 +60,7 @@ const Button = ({ outline }: Props) => {
 
 Tailwind CSS를 사용할 때 아래와 같은 경우가 존재한다.
 
-```js
+```tsx
 <Button className="text-blue-400 text-red-400" />
 ```
 
@@ -83,7 +83,7 @@ Tailwind CSS를 사용할 때 아래와 같은 경우가 존재한다.
 
 하지만 동일한 스타일의 아래와 같은 경우는 어떨까?
 
-```js
+```tsx
 const Button = ({ className, text }: Props) => {
   return <button className={`text-blue-400 ${className}`}>{text}</button>;
 };
@@ -100,7 +100,7 @@ const Button = ({ className, text }: Props) => {
 
 tailwind는 모든 스타일을 className으로 정의하기 때문에 조금만 써도 아래와 같이 굉장히 길어진다.
 
-```js
+```tsx
 const Button = () => {
   return (
     <button className="flex items-center justify-center h-10 px-4 py-2 rounded-md text-sm font-medium bg-blue-600 text-white hover:bg-blue-600/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
@@ -117,7 +117,7 @@ const Button = () => {
 
 아래는 이전 Button에서 조금이나마 스타일의 관심사를 분류해둔 예시이다.
 
-```js
+```tsx
 // 예시
 const Button = () => {
   const baseStyle =
@@ -243,7 +243,7 @@ module.exports = {
 
   - tailwind의 조건부 스타일링을 더 편하게 만들어준다.
 
-    ```ts
+    ```tsx
     // 사용전
     const Button = ({ variant }: { variant: 'default' | 'outline' }) => {
       const baseStyle =
@@ -293,7 +293,7 @@ module.exports = {
 
 위 세가지 라이브러리를 조합하면 서로를 보완해줄 수 있다.
 
-```js
+```tsx
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -304,7 +304,7 @@ export function cn(...inputs: ClassValue[]) {
 
 위 코드는 clsx로 복잡한 인자에서 false로 평가된 필드를 지운 뒤 하나의 string으로 만들고 tailwind-merge로 tailwind의 class 우선순위 문제를 해결해주는 함수이다.
 
-```js
+```tsx
 // ... cva의 예제코드 중
 const Button = ({ variant, className }: ButtonProps) => {
   return (
@@ -323,7 +323,7 @@ const Button = ({ variant, className }: ButtonProps) => {
 
 아래는 1,2,3번 규칙을 적용한 Button 컴포넌트이다.
 
-```js
+```tsx
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from 'src/utils/twUtils';

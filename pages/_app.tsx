@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
         />
         <meta
           name="google-site-verification"
-          content="LpYUsfBzMiQKyn80Cq6jD6zbAfwzOxkZMe86DaOKuZI"
+          content="FF6t1bkNcOzIKmGBsvLEifaj0Jzk18sdPNCUC6Yss7k"
         />
       </Head>
       <style jsx global>{`

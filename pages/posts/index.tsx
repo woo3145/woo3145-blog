@@ -58,7 +58,7 @@ const PostsPage = ({ posts, allTags }: Props) => {
         </h1>
         <p className="text-xl">posts {filteredPosts.length}</p>
       </div>
-      <div className="flex flex-wrap gap-4 mb-8 max-w-3xl">
+      <div className="flex flex-wrap gap-4 mb-8">
         {allTags.map((tag, idx) => {
           return (
             <button

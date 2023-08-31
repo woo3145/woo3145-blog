@@ -19,7 +19,7 @@ excerpt: 'serverless의 typescript 템플릿 구조 파악 및 배포하기'
 ## Serverless 란?
 
 serverless는 개발자가 서버를 관리하지 않고 클라우드 컴퓨팅을 이용하여 어플리케이션을 빌드하고 실행하는 것을 의미한다.
-이러한 서버리스 컴퓨팅 서비를 제공하는 업체가 다양하기 때문에 여러 함수들과 리소스를 관리하고 배포하는 것은 복잡할 수 있다.  
+이러한 서버리스 컴퓨팅 서버를 제공하는 업체가 다양하기 때문에 여러 함수들과 리소스를 관리하고 배포하는 것은 복잡할 수 있다.  
 위 문제를 해결하는것이 serverless framework이다.
 
 ## Serverless Framework
@@ -326,4 +326,6 @@ const result = await fetch('생성된URL/hello', {
 
 # 마치며
 
-다음글에선 AWS Lambda + AWS MediaConvert를 사용하여 S3에 동영상이 업로드를 트리거로 3가지 해상도로 인코딩하고 썸네일을 생성하는 작업을 정리해야겠다.
+다음글에선 AWS Lambda + AWS MediaConvert를 사용하여 S3에 동영상을 업로드하면 3가지 해상도로 인코딩하고 썸네일을 생성하여 저장하는 작업을 다룬다.
+
+[다음글](7-encoding-with-lambda)

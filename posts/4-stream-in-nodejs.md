@@ -149,7 +149,7 @@ body의 데이터를 스트림에 입력시킨다.
 
 ### 비디오나 오디오 스트리밍
 
-https://github.com/woo3145/video-streaming-app/blob/master/server/app.js
+[깃허브 참고](https://github.com/woo3145/video-streaming-app/blob/master/server/app.js)
 
 브라우저는 video, audio 태그에 대해 자동으로 HTTP Range요청을 통한 스트리밍 및 재생처리를 해준다.
 

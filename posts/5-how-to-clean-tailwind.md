@@ -219,7 +219,7 @@ module.exports = {
 
 ### 3. clsx, tailwind-merge, cva 사용하기
 
-- [clsx]('https://www.npmjs.com/package/clsx')
+- [clsx](https://www.npmjs.com/package/clsx)
 
   - 복잡한 인수를 파싱하여 하나의 문자열로 className을 만들어준다.
 
@@ -229,7 +229,7 @@ module.exports = {
     // 결과 "a c e"
     ```
 
-- [tailwind-merge]("https://github.com/dcastil/tailwind-merge")
+- [tailwind-merge](https://github.com/dcastil/tailwind-merge)
 
   - 위에서 언급한 tailwind의 class 우선순위 문제를 해결해준다.
   - 뒤에 나오는 인자가 우선 순위를 가짐
@@ -239,7 +239,7 @@ module.exports = {
     // 결과 'hover:bg-dark-red p-3 bg-[#B91C1C]'
     ```
 
-- [cva]("https://cva.style/docs/getting-started/variants#creating-variants")
+- [cva](https://cva.style/docs/getting-started/variants#creating-variants)
 
   - tailwind의 조건부 스타일링을 더 편하게 만들어준다.
 

@@ -2,7 +2,7 @@
 title: 'AWS Lambda로 동영상 인코딩 및 썸네일 추출하기'
 author: 'woo3145'
 date: '2023-8-31'
-thumbnail: '6_thumbnail.png'
+thumbnail: '7_thumbnail.png'
 tags:
   - TypeScript
   - Serverless

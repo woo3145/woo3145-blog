@@ -9,6 +9,8 @@ tags:
 excerpt: ''
 ---
 
+[shadcn](https://ui.shadcn.com/docs/installation/manual)
+
 ## shadcn ui가 뭘까?
 
 shadcn ui는 부트스트랩이나 ant Design과 같은 UI 프레임워크가 아니다.
@@ -32,18 +34,38 @@ $ npx shadcn-ui@latest add button
 
 create-react-app부터 shadcn을 설정하여 사용하는 방법을 이글에서 다룬다.
 
-아래는 실제 shadcn의 개발자분의 말씀으로, 자바스크립트 환경에서 사용하려면 타입을 수동으로 변경해야 한다고 하신다
+아래는 실제 shadcn의 개발자분의 말씀으로, 자바스크립트 환경에서 사용하려면 타입을 제거해야한다.
 ![이미지](/images/8/2.png)
 
-## Installation
+또한 타입스크립트 환경과 달리 alias 설정이 안되기 때문에 이를 설정해 줘야한다.
+(정 하고싶으면 eject로 webpack 파일을 꺼내야함)
 
-### Create React App을 통해 리액트 프로젝트 생성하기
+tsconfig.json 와 jsconfig.json의 차이인데, 타입스크립트는 한번 js로 컴파일되어 실행되기 때문에
+별칭들을 올바른 경로로 바꿔 컴파일 된다. 하지만 자바스크립트는 코드에디터(vscode)상의 별칭만 인식되고
+실제 실행할때 별칭 그대로 실행되기 때문에 실행시 에러가 발생한다.
+
+```json
+// shadcn
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    // 아래의 별칭은 js 환경에선 사용 x
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+```
+
+# Installation
+
+## Create React App을 통해 리액트 프로젝트 생성하기
 
 ```cs
 npx create-react-app my-app
 ```
 
-### Tailwind Css 설치하기
+## Tailwind Css 설치하기
 
 [공식문서 참고](https://tailwindcss.com/docs/installation)
 
@@ -97,6 +119,8 @@ root.render(
 reportWebVitals();
 ```
 
+## shadcn 설정
+
 ### jsconfig.json 파일 생성
 
 ![이미지](/images/8/3.png)
@@ -104,10 +128,7 @@ reportWebVitals();
 ```json
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "@/*": ["./*"]
-    }
+    "baseUrl": "src" // 절대경로를 src로 바꿔줌
   }
 }
 ```
@@ -120,6 +141,30 @@ npx shadcn-ui@latest init
 
 아래 설정대로 작성해주고 마지막에 y를 누르면 된다
 ![이미지](/images/8/4.png)
+
+### 생성된 components.json 수정하기
+
+```ts
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": false,
+  "tsx": false,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  // 이 부분
+  // (이전 단계에서 cli 설정할때 변경해도됨)
+  "aliases": {
+    "components": "components",
+    "utils": "lib/utils"
+  }
+}
+
+```
 
 ## 이제 사용하기
 
@@ -138,12 +183,6 @@ npx shadcn-ui@latest add button
 ![이미지](/images/8/9.png)
 
 하지만 ts가 아닌 환경에서 실제로 사용하려면 추가적인 작업이 필요하다
-
-### 타입스크립트를 안쓰는경우 추가작업
-
-@ 절대경로로 지정된 경로를 컴포넌트를 다운받을 때마다 상대경로로 변경해야한다.
-
-![이미지](/images/8/10.png)
 
 ### 실제 사용
 
